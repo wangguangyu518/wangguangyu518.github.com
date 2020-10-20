@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+		body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+	</style>
+	<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=I7FIAVxG5YfpvW3g0Bh6y0EeFKbGPS4F"></script>
+	<title>地址解析</title>
+</head>
+<body>
+	<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");
+	var point = new BMap.Point(125.31785,43.862085);
+	map.centerAndZoom(point,15);
+	// 创建地址解析器实例
+    map.enableScrollWheelZoom(true); 
+
+    var data_baoma=[[125.295572,43.856989],[125.332259,43.856937],[125.314652,43.869806]];
+    var data_benchi=[[125.314185,43.864632],[125.313826,43.862293],[125.31785,43.862085]];
+
+	for(var i=0;i<3;i++)
+    {var marker1=new BMap.Marker(new BMap.Point(data_baoma[i][0],data_baoma[i][1]),{icon:
+    new BMap.Icon("1.PNG", new BMap.Size(50,50))}); map.addOverlay(marker1);
+	marker1.setAnimation(BMAP_ANIMATION_BOUNCE); 
+	marker1.enableDragging()} ;
+	           
+
+    for(var i=0;i<data_benchi.length;i++)
+    {var marker2=new BMap.Marker(new BMap.Point(data_benchi[i][0],data_benchi[i][1]),{icon:
+    new BMap.Icon("2.PNG", new BMap.Size(50,50))}); map.addOverlay(marker2);
+	marker2.setAnimation(BMAP_ANIMATION_BOUNCE);} ;
+
+    var point_zhongxin = new BMap.Point(125.295572,43.85698);
+    var circle_1 = new BMap.Circle(point_zhongxin,1000,{strokeColor:"red", strokeWeight:2, strokeOpacity:0.5}); 
+    map.addOverlay(circle_1);
+	circle_1.enableEditing();
+
+	map.addOverlay(new BMap.Label("长亮你是山炮吗",{position:new BMap.Point(125.295572,43.856989)}));
+
+	
+</script>
